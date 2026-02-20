@@ -6,27 +6,27 @@ interface Props {
 }
 
 const STATUS_STYLES: Record<BillStatus, string> = {
-  introduced: "bg-blue-100 text-blue-800 border-blue-200",
-  in_committee: "bg-yellow-100 text-yellow-800 border-yellow-200",
-  passed_chamber: "bg-orange-100 text-orange-800 border-orange-200",
-  passed_both: "bg-purple-100 text-purple-800 border-purple-200",
-  signed: "bg-green-100 text-green-800 border-green-200",
-  enacted: "bg-green-100 text-green-800 border-green-200",
-  failed: "bg-gray-100 text-gray-600 border-gray-200",
-  vetoed: "bg-red-100 text-red-800 border-red-200",
-  proposed: "bg-sky-100 text-sky-800 border-sky-200",
+  introduced:      "bg-[#F9D6D3] text-[#7A3030] border-[#EDB9B4]",
+  in_committee:    "bg-[#D8EFF1] text-[#2E6B72] border-[#B3D8DC]",
+  passed_chamber:  "bg-[#F6E8D0] text-[#7A5020] border-[#E8CA9E]",
+  passed_both:     "bg-[#E3EDD9] text-[#4A6630] border-[#C0D4A6]",
+  signed:          "bg-[#E3EDD9] text-[#4A6630] border-[#C0D4A6]",
+  enacted:         "bg-[#E3EDD9] text-[#4A6630] border-[#C0D4A6]",
+  failed:          "bg-[#EAE6E0] text-[#6B6055] border-[#D4CFC7]",
+  vetoed:          "bg-[#F0D8DB] text-[#7A2838] border-[#DEB8BE]",
+  proposed:        "bg-[#D8EFF1] text-[#2E6B72] border-[#B3D8DC]",
 };
 
 const STATUS_DOTS: Record<BillStatus, string> = {
-  introduced: "bg-blue-500",
-  in_committee: "bg-yellow-500",
-  passed_chamber: "bg-orange-500",
-  passed_both: "bg-purple-500",
-  signed: "bg-green-500",
-  enacted: "bg-green-500",
-  failed: "bg-gray-400",
-  vetoed: "bg-red-500",
-  proposed: "bg-sky-500",
+  introduced:      "bg-[#BC455A]",
+  in_committee:    "bg-[#81BDC3]",
+  passed_chamber:  "bg-[#E8A84A]",
+  passed_both:     "bg-[#AFC892]",
+  signed:          "bg-[#AFC892]",
+  enacted:         "bg-[#AFC892]",
+  failed:          "bg-[#C8C0B4]",
+  vetoed:          "bg-[#BC455A]",
+  proposed:        "bg-[#81BDC3]",
 };
 
 export default function StatusBadge({ status, label }: Props) {

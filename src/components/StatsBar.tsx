@@ -26,33 +26,33 @@ export default function StatsBar({ bills, hasLiveData, lastUpdated }: Props) {
     : null;
 
   return (
-    <div className="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-100 rounded-xl p-4">
+    <div className="bg-white border border-[#E8E2D8] rounded-xl p-4">
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-3">
-        <Stat label="Federal Bills" value={federal} color="blue" />
-        <Stat label="California Bills" value={california} color="amber" />
-        <Stat label="Signed / Enacted" value={signed} color="green" />
-        <Stat label="Active / Pending" value={inProgress} color="orange" />
+        <Stat label="Federal Bills" value={federal} color="#81BDC3" />
+        <Stat label="California Bills" value={california} color="#BC455A" />
+        <Stat label="Signed / Enacted" value={signed} color="#AFC892" />
+        <Stat label="Active / Pending" value={inProgress} color="#304059" />
       </div>
 
-      <div className="flex items-center justify-between pt-3 border-t border-orange-100">
-        <p className="text-xs text-orange-700">
+      <div className="flex items-center justify-between pt-3 border-t border-[#F2EDE4]">
+        <p className="text-xs text-[#6B6055]">
           Tracking legislation related to the{" "}
-          <span className="font-semibold">Eaton Fire</span> and California
+          <span className="font-semibold text-[#304059]">Eaton Fire</span> and California
           wildfire recovery
         </p>
-        <div className="flex items-center gap-2 text-xs text-gray-500">
+        <div className="flex items-center gap-2 text-xs">
           {hasLiveData ? (
-            <span className="flex items-center gap-1 text-green-600">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse inline-block" />
+            <span className="flex items-center gap-1 text-[#4A6630]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#AFC892] animate-pulse inline-block" />
               Live data
             </span>
           ) : (
-            <span className="flex items-center gap-1 text-amber-600">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block" />
+            <span className="flex items-center gap-1 text-[#6B6055]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C8C0B4] inline-block" />
               Curated data
             </span>
           )}
-          {updatedAt && <span className="text-gray-400">· {updatedAt}</span>}
+          {updatedAt && <span className="text-[#B8B0A8]">· {updatedAt}</span>}
         </div>
       </div>
     </div>
@@ -66,18 +66,12 @@ function Stat({
 }: {
   label: string;
   value: number;
-  color: "blue" | "amber" | "green" | "orange";
+  color: string;
 }) {
-  const colorMap = {
-    blue: "text-blue-600",
-    amber: "text-amber-600",
-    green: "text-green-600",
-    orange: "text-orange-600",
-  };
   return (
     <div className="text-center">
-      <div className={`text-2xl font-bold ${colorMap[color]}`}>{value}</div>
-      <div className="text-xs text-gray-500 mt-0.5">{label}</div>
+      <div className="text-2xl font-bold" style={{ color }}>{value}</div>
+      <div className="text-xs text-[#9B9488] mt-0.5">{label}</div>
     </div>
   );
 }

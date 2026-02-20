@@ -9,37 +9,37 @@ interface Props {
 }
 
 const SOURCE_LABELS: Record<ProposalSource, string> = {
-  think_tank: "Think Tank",
-  politician: "Politician",
+  think_tank:       "Think Tank",
+  politician:       "Politician",
   citizen_movement: "Community",
-  government_agency: "Gov. Agency",
-  advocacy_group: "Advocacy Group",
-  academic: "Academic",
+  government_agency:"Gov. Agency",
+  advocacy_group:   "Advocacy Group",
+  academic:         "Academic",
 };
 
 const SOURCE_COLORS: Record<ProposalSource, string> = {
-  think_tank: "text-violet-700 bg-violet-50 border-violet-200",
-  politician: "text-blue-700 bg-blue-50 border-blue-200",
-  citizen_movement: "text-emerald-700 bg-emerald-50 border-emerald-200",
-  government_agency: "text-slate-700 bg-slate-50 border-slate-200",
-  advocacy_group: "text-rose-700 bg-rose-50 border-rose-200",
-  academic: "text-indigo-700 bg-indigo-50 border-indigo-200",
+  think_tank:       "text-[#2E6B72] bg-[#EBF4F5] border-[#B8D8DC]",
+  politician:       "text-[#304059] bg-[#E8EDF3] border-[#C0CCD9]",
+  citizen_movement: "text-[#4A6630] bg-[#EEF3E8] border-[#C0D4A6]",
+  government_agency:"text-[#5C4E3A] bg-[#F2EDE4] border-[#DDD6C8]",
+  advocacy_group:   "text-[#7A3040] bg-[#F5ECEE] border-[#DFC5CB]",
+  academic:         "text-[#2E4A72] bg-[#E8EEF5] border-[#B8C8DC]",
 };
 
 const STATUS_COLORS: Record<ProposalStatus, string> = {
-  circulating: "text-gray-600 bg-gray-50 border-gray-200",
-  gaining_support: "text-blue-700 bg-blue-50 border-blue-200",
-  under_review: "text-amber-700 bg-amber-50 border-amber-200",
-  incorporated: "text-green-700 bg-green-50 border-green-200",
-  stalled: "text-red-600 bg-red-50 border-red-200",
+  circulating:     "text-[#6B6055] bg-[#EAE6E0] border-[#D4CFC7]",
+  gaining_support: "text-[#2E6B72] bg-[#D8EFF1] border-[#B3D8DC]",
+  under_review:    "text-[#7A5020] bg-[#F6E8D0] border-[#E8CA9E]",
+  incorporated:    "text-[#4A6630] bg-[#E3EDD9] border-[#C0D4A6]",
+  stalled:         "text-[#7A2838] bg-[#F0D8DB] border-[#DEB8BE]",
 };
 
 const STATUS_DOTS: Record<ProposalStatus, string> = {
-  circulating: "bg-gray-400",
-  gaining_support: "bg-blue-500",
-  under_review: "bg-amber-500",
-  incorporated: "bg-green-500",
-  stalled: "bg-red-400",
+  circulating:     "bg-[#C8C0B4]",
+  gaining_support: "bg-[#81BDC3]",
+  under_review:    "bg-[#E8A84A]",
+  incorporated:    "bg-[#AFC892]",
+  stalled:         "bg-[#BC455A]",
 };
 
 function formatDate(dateStr: string): string {
@@ -61,12 +61,12 @@ export default function ProposalCard({ proposal }: Props) {
     <article
       className={`rounded-xl border bg-white shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden ${
         proposal.isHighlighted
-          ? "border-violet-200 ring-1 ring-violet-100"
-          : "border-gray-200"
+          ? "border-[#BC5839]"
+          : "border-[#E8E2D8]"
       }`}
     >
       {proposal.isHighlighted && (
-        <div className="h-1 bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400" />
+        <div className="h-1 bg-[#BC5839]" />
       )}
 
       <div className="p-5">
@@ -95,13 +95,13 @@ export default function ProposalCard({ proposal }: Props) {
         </div>
 
         {/* Title */}
-        <h3 className="text-base font-semibold text-gray-900 mb-1.5 leading-snug">
+        <h3 className="text-base font-semibold text-[#304059] mb-1.5 leading-snug">
           {proposal.title}
         </h3>
 
         {/* Proposed by */}
-        <p className="text-xs text-gray-500 mb-3">
-          <span className="font-medium text-gray-600">
+        <p className="text-xs text-[#9B9488] mb-3">
+          <span className="font-medium text-[#6B6055]">
             {proposal.proposedBy.name}
           </span>
           {" · "}
@@ -111,7 +111,7 @@ export default function ProposalCard({ proposal }: Props) {
         </p>
 
         {/* Description */}
-        <p className="text-sm text-gray-700 leading-relaxed mb-3">
+        <p className="text-sm text-[#4A3F35] leading-relaxed mb-3">
           {expanded
             ? proposal.description
             : `${proposal.description.slice(0, 200)}${
@@ -121,11 +121,11 @@ export default function ProposalCard({ proposal }: Props) {
 
         {/* Summary (expanded) */}
         {expanded && proposal.summary && (
-          <div className="bg-violet-50 border border-violet-100 rounded-lg p-3 mb-3">
-            <p className="text-xs font-semibold text-violet-800 mb-1">
+          <div className="bg-[#F8F5EF] border border-[#E8E2D8] rounded-lg p-3 mb-3">
+            <p className="text-xs font-semibold text-[#304059] mb-1">
               Why It Matters for Altadena
             </p>
-            <p className="text-sm text-violet-900 leading-relaxed">
+            <p className="text-sm text-[#4A3F35] leading-relaxed">
               {proposal.summary}
             </p>
           </div>
@@ -140,17 +140,17 @@ export default function ProposalCard({ proposal }: Props) {
 
         {/* Related bills (expanded) */}
         {expanded && proposal.relatedBills && proposal.relatedBills.length > 0 && (
-          <div className="text-xs text-gray-500 mb-3">
-            <span className="font-medium text-gray-600">Related legislation: </span>
+          <div className="text-xs text-[#9B9488] mb-3">
+            <span className="font-medium text-[#6B6055]">Related legislation: </span>
             {proposal.relatedBills.join(", ")}
           </div>
         )}
 
         {/* Footer */}
-        <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+        <div className="flex items-center justify-between pt-3 border-t border-[#F2EDE4]">
           <button
             onClick={() => setExpanded(!expanded)}
-            className="text-xs text-gray-500 hover:text-gray-700 font-medium transition-colors"
+            className="text-xs text-[#BC5839] hover:text-[#9B3A22] font-medium transition-colors"
           >
             {expanded ? "Show less" : "Show more"}
           </button>
@@ -160,7 +160,7 @@ export default function ProposalCard({ proposal }: Props) {
               href={proposal.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-violet-600 hover:text-violet-800 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#FDBA77] text-[#304059] px-3 py-1.5 rounded-lg hover:bg-[#FCA84A] transition-colors"
             >
               View source
               <svg
@@ -178,7 +178,7 @@ export default function ProposalCard({ proposal }: Props) {
               </svg>
             </a>
           ) : (
-            <span className="text-xs text-gray-300">No public link</span>
+            <span className="text-xs text-[#C8C0B4]">No public link</span>
           )}
         </div>
       </div>

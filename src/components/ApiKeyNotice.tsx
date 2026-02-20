@@ -20,7 +20,7 @@ const ApiLink = ({ href, label }: { href: string; label: string }) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="inline-flex items-center gap-1 text-xs bg-white border border-blue-200 text-blue-700 px-3 py-1.5 rounded-lg hover:bg-blue-50 font-medium transition-colors"
+    className="inline-flex items-center gap-1 text-xs bg-white border border-[#C8C0B4] text-[#304059] px-3 py-1.5 rounded-lg hover:bg-[#304059] hover:text-white hover:border-[#304059] font-medium transition-colors"
   >
     {label}
     <ExternalIcon />
@@ -36,17 +36,17 @@ export default function ApiKeyNotice({
   if (anyConfigured) return null;
 
   return (
-    <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm">
+    <div className="bg-[#F2EDE4] border border-[#DDD6C8] rounded-xl p-4 text-sm">
       <div className="flex items-start gap-3">
-        <span className="text-blue-500 mt-0.5 text-lg">ℹ</span>
+        <span className="text-[#9B9488] mt-0.5 text-lg">ℹ</span>
         <div>
-          <p className="font-semibold text-blue-800 mb-1">
+          <p className="font-semibold text-[#304059] mb-1">
             Showing curated bill data
           </p>
-          <p className="text-blue-700 mb-2">
+          <p className="text-[#4A3F35] mb-2">
             Add a free API key to fetch live bill data from official sources.
             Add to{" "}
-            <code className="bg-blue-100 px-1 rounded text-xs">.env.local</code>.
+            <code className="bg-white/60 px-1 rounded text-xs">.env.local</code>.
             LegiScan is the easiest — it covers both federal and California state bills in one key.
           </p>
           <div className="flex flex-wrap gap-3">
@@ -63,9 +63,9 @@ export default function ApiKeyNotice({
               label="Get OpenStates API key"
             />
           </div>
-          <p className="text-xs text-blue-600 mt-2">
+          <p className="text-xs text-[#9B9488] mt-2">
             All APIs are free. See{" "}
-            <code className="bg-blue-100 px-1 rounded">.env.local.example</code>{" "}
+            <code className="bg-white/60 px-1 rounded">.env.local.example</code>{" "}
             in the project root for setup instructions.
           </p>
         </div>

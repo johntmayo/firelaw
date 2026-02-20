@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <header className="bg-[#304059] sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           <div>
@@ -9,11 +9,11 @@ export default function Header() {
                 🔥
               </span>
               <div>
-                <h1 className="text-xl font-bold text-gray-900 leading-tight">
+                <h1 className="text-xl font-bold text-white leading-tight">
                   Altadena Fire Law Tracker
                 </h1>
-                <p className="text-xs text-gray-500">
-                  California wildfire & disaster recovery legislation
+                <p className="text-xs text-[#AFC892]">
+                  California wildfire &amp; disaster recovery legislation
                 </p>
               </div>
             </div>
@@ -23,7 +23,7 @@ export default function Header() {
               href="https://leginfo.legislature.ca.gov"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-gray-500 hover:text-gray-700 hidden sm:block transition-colors"
+              className="text-xs text-white/60 hover:text-white hidden sm:block transition-colors"
             >
               CA Legislature
             </a>
@@ -31,11 +31,11 @@ export default function Header() {
               href="https://www.congress.gov"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-gray-500 hover:text-gray-700 hidden sm:block transition-colors"
+              className="text-xs text-white/60 hover:text-white hidden sm:block transition-colors"
             >
               Congress.gov
             </a>
-            <span className="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded font-mono">
+            <span className="text-xs text-[#AFC892] bg-[#253347] px-2 py-1 rounded font-mono">
               Altadena, CA
             </span>
           </div>

@@ -50,7 +50,7 @@ const SORTS: { value: SortOrder; label: string }[] = [
 ];
 
 const selectClass =
-  "text-sm border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-400 transition-colors cursor-pointer";
+  "text-sm border border-[#E8E2D8] rounded-lg px-3 py-2 bg-white text-[#304059] focus:outline-none focus:ring-2 focus:ring-[#BC5839]/20 focus:border-[#BC5839] transition-colors cursor-pointer";
 
 export default function FilterBar({
   filters,
@@ -71,11 +71,11 @@ export default function FilterBar({
   }
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+    <div className="bg-white border border-[#E8E2D8] rounded-xl p-4 shadow-sm">
       {/* Search */}
       <div className="relative mb-4">
         <svg
-          className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+          className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#B8B0A8]"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -94,12 +94,12 @@ export default function FilterBar({
           onChange={(e) =>
             onFiltersChange({ ...filters, search: e.target.value })
           }
-          className="w-full pl-10 pr-4 py-2.5 text-sm border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-400 transition-colors"
+          className="w-full pl-10 pr-4 py-2.5 text-sm border border-[#E8E2D8] rounded-lg bg-white text-[#304059] placeholder-[#B8B0A8] focus:outline-none focus:ring-2 focus:ring-[#BC5839]/20 focus:border-[#BC5839] transition-colors"
         />
         {filters.search && (
           <button
             onClick={() => onFiltersChange({ ...filters, search: "" })}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-[#B8B0A8] hover:text-[#6B6055]"
           >
             ×
           </button>
@@ -160,7 +160,7 @@ export default function FilterBar({
         </select>
 
         <div className="flex items-center gap-2 ml-auto">
-          <span className="text-xs text-gray-400">Sort:</span>
+          <span className="text-xs text-[#9B9488]">Sort:</span>
           <select
             value={sort}
             onChange={(e) => onSortChange(e.target.value as SortOrder)}
@@ -176,18 +176,18 @@ export default function FilterBar({
       </div>
 
       {/* Result count + reset */}
-      <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
-        <p className="text-xs text-gray-500">
+      <div className="flex items-center justify-between mt-3 pt-3 border-t border-[#F2EDE4]">
+        <p className="text-xs text-[#9B9488]">
           Showing{" "}
-          <span className="font-semibold text-gray-700">{filteredCount}</span>{" "}
+          <span className="font-semibold text-[#304059]">{filteredCount}</span>{" "}
           of{" "}
-          <span className="font-semibold text-gray-700">{totalCount}</span>{" "}
+          <span className="font-semibold text-[#304059]">{totalCount}</span>{" "}
           bills
         </p>
         {hasActiveFilters && (
           <button
             onClick={resetFilters}
-            className="text-xs text-orange-600 hover:text-orange-800 font-medium transition-colors"
+            className="text-xs text-[#BC5839] hover:text-[#9B3A22] font-medium transition-colors"
           >
             Clear filters
           </button>

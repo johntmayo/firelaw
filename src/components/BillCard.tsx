@@ -16,9 +16,9 @@ const SOURCE_LABELS: Record<Bill["source"], string> = {
 };
 
 const SOURCE_COLORS: Record<Bill["source"], string> = {
-  federal: "text-blue-600 bg-blue-50 border-blue-100",
-  california: "text-amber-700 bg-amber-50 border-amber-100",
-  la_county: "text-purple-600 bg-purple-50 border-purple-100",
+  federal:    "text-[#2E6B72] bg-[#EBF4F5] border-[#B8D8DC]",
+  california: "text-[#7A3040] bg-[#F5ECEE] border-[#DFC5CB]",
+  la_county:  "text-[#4A6630] bg-[#EEF3E8] border-[#C0D4A6]",
 };
 
 function formatDate(dateStr: string): string {
@@ -40,11 +40,11 @@ export default function BillCard({ bill }: Props) {
   return (
     <article
       className={`rounded-xl border bg-white shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden ${
-        bill.isHighlighted ? "border-orange-200 ring-1 ring-orange-100" : "border-gray-200"
+        bill.isHighlighted ? "border-[#BC5839]" : "border-[#E8E2D8]"
       }`}
     >
       {bill.isHighlighted && (
-        <div className="h-1 bg-gradient-to-r from-orange-400 via-red-400 to-rose-400" />
+        <div className="h-1 bg-[#BC5839]" />
       )}
 
       <div className="p-5">
@@ -58,12 +58,12 @@ export default function BillCard({ bill }: Props) {
             >
               {SOURCE_LABELS[bill.source]}
             </span>
-            <span className="text-sm font-mono font-semibold text-gray-600">
+            <span className="text-sm font-mono font-semibold text-[#6B6055]">
               {bill.billNumber}
             </span>
             {bill.isLive && (
-              <span className="text-xs text-green-600 font-medium flex items-center gap-1">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-xs text-[#4A6630] font-medium flex items-center gap-1">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#AFC892] animate-pulse" />
                 Live
               </span>
             )}
@@ -72,23 +72,23 @@ export default function BillCard({ bill }: Props) {
         </div>
 
         {/* Title */}
-        <h3 className="text-base font-semibold text-gray-900 mb-2 leading-snug">
+        <h3 className="text-base font-semibold text-[#304059] mb-2 leading-snug">
           {bill.title}
         </h3>
 
         {/* Body / legislative chamber */}
-        <p className="text-xs text-gray-500 mb-3">{bill.body}</p>
+        <p className="text-xs text-[#9B9488] mb-3">{bill.body}</p>
 
         {/* Description */}
-        <p className="text-sm text-gray-700 leading-relaxed mb-3">
+        <p className="text-sm text-[#4A3F35] leading-relaxed mb-3">
           {expanded ? bill.description : `${bill.description.slice(0, 180)}${bill.description.length > 180 ? "…" : ""}`}
         </p>
 
         {/* Summary (expanded) */}
         {expanded && bill.summary && (
-          <div className="bg-amber-50 border border-amber-100 rounded-lg p-3 mb-3">
-            <p className="text-xs font-semibold text-amber-800 mb-1">Why It Matters for Altadena</p>
-            <p className="text-sm text-amber-900 leading-relaxed">{bill.summary}</p>
+          <div className="bg-[#F8F5EF] border border-[#E8E2D8] rounded-lg p-3 mb-3">
+            <p className="text-xs font-semibold text-[#304059] mb-1">Why It Matters for Altadena</p>
+            <p className="text-sm text-[#4A3F35] leading-relaxed">{bill.summary}</p>
           </div>
         )}
 
@@ -101,8 +101,8 @@ export default function BillCard({ bill }: Props) {
 
         {/* Sponsors */}
         {bill.sponsors.length > 0 && (
-          <div className="text-xs text-gray-500 mb-3">
-            <span className="font-medium text-gray-600">Sponsors: </span>
+          <div className="text-xs text-[#9B9488] mb-3">
+            <span className="font-medium text-[#6B6055]">Sponsors: </span>
             {bill.sponsors
               .map((s) => `${s.name}${s.party ? ` (${s.party})` : ""}`)
               .join(", ")}
@@ -111,11 +111,11 @@ export default function BillCard({ bill }: Props) {
 
         {/* Last action */}
         {bill.lastAction && (
-          <div className="text-xs text-gray-500 mb-4">
-            <span className="font-medium text-gray-600">Last Action: </span>
+          <div className="text-xs text-[#9B9488] mb-4">
+            <span className="font-medium text-[#6B6055]">Last Action: </span>
             {bill.lastAction}
             {bill.statusDate && (
-              <span className="text-gray-400 ml-1">
+              <span className="text-[#B8B0A8] ml-1">
                 — {formatDate(bill.statusDate)}
               </span>
             )}
@@ -123,10 +123,10 @@ export default function BillCard({ bill }: Props) {
         )}
 
         {/* Footer */}
-        <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+        <div className="flex items-center justify-between pt-3 border-t border-[#F2EDE4]">
           <button
             onClick={() => setExpanded(!expanded)}
-            className="text-xs text-gray-500 hover:text-gray-700 font-medium transition-colors"
+            className="text-xs text-[#BC5839] hover:text-[#9B3A22] font-medium transition-colors"
           >
             {expanded ? "Show less" : "Show more"}
           </button>
@@ -135,7 +135,7 @@ export default function BillCard({ bill }: Props) {
             href={bill.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-600 hover:text-blue-800 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#FDBA77] text-[#304059] px-3 py-1.5 rounded-lg hover:bg-[#FCA84A] transition-colors"
           >
             View full text
             <svg

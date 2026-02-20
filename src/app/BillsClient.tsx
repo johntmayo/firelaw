@@ -144,20 +144,20 @@ export default function BillsClient({
   }, [initialProposals, proposalSearch, proposalTopic, proposalSourceType]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#FFFDF5]">
       <Header />
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         {/* Disclaimer */}
-        <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-xs text-amber-800 flex items-start gap-2">
-          <span className="text-amber-500 text-sm mt-0.5">⚠</span>
+        <div className="bg-[#F5F0E8] border border-[#DDD6C8] rounded-xl px-4 py-3 text-xs text-[#4A3F35] flex items-start gap-2">
+          <span className="text-[#9B9488] text-sm mt-0.5">⚠</span>
           <span>
             <strong>Important:</strong> Legislation moves quickly. Bill numbers,
             statuses, and summaries shown here reflect information available at
             the time of curation. Always verify current status at{" "}
             <a
               href="https://leginfo.legislature.ca.gov"
-              className="underline"
+              className="underline text-[#BC5839]"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -166,7 +166,7 @@ export default function BillsClient({
             or{" "}
             <a
               href="https://www.congress.gov"
-              className="underline"
+              className="underline text-[#BC5839]"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -177,21 +177,21 @@ export default function BillsClient({
         </div>
 
         {/* Tab switcher */}
-        <div className="flex gap-1 bg-gray-100 p-1 rounded-xl w-fit">
+        <div className="flex gap-1 bg-[#EAE5DC] p-1 rounded-xl w-fit">
           <button
             onClick={() => setActiveTab("legislation")}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
               activeTab === "legislation"
-                ? "bg-white text-gray-900 shadow-sm"
-                : "text-gray-500 hover:text-gray-700"
+                ? "bg-white text-[#304059] shadow-sm"
+                : "text-[#6B6055] hover:text-[#304059]"
             }`}
           >
             Legislation
             <span
               className={`text-xs px-1.5 py-0.5 rounded-full font-bold ${
                 activeTab === "legislation"
-                  ? "bg-orange-100 text-orange-700"
-                  : "bg-gray-200 text-gray-500"
+                  ? "bg-[#304059] text-white"
+                  : "bg-[#D4CFC7] text-[#6B6055]"
               }`}
             >
               {initialBills.length}
@@ -201,16 +201,16 @@ export default function BillsClient({
             onClick={() => setActiveTab("proposals")}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
               activeTab === "proposals"
-                ? "bg-white text-gray-900 shadow-sm"
-                : "text-gray-500 hover:text-gray-700"
+                ? "bg-white text-[#304059] shadow-sm"
+                : "text-[#6B6055] hover:text-[#304059]"
             }`}
           >
             Policy Proposals
             <span
               className={`text-xs px-1.5 py-0.5 rounded-full font-bold ${
                 activeTab === "proposals"
-                  ? "bg-violet-100 text-violet-700"
-                  : "bg-gray-200 text-gray-500"
+                  ? "bg-[#304059] text-white"
+                  : "bg-[#D4CFC7] text-[#6B6055]"
               }`}
             >
               {initialProposals.length}
@@ -239,25 +239,25 @@ export default function BillsClient({
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setHighlightedOnly(!highlightedOnly)}
-                  className={`inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg border transition-all ${
+                  className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg border transition-all ${
                     highlightedOnly
-                      ? "bg-orange-500 text-white border-orange-500 shadow-sm"
-                      : "bg-white text-orange-700 border-orange-200 hover:bg-orange-50"
+                      ? "bg-[#FDBA77] text-[#304059] border-[#FDBA77] shadow-sm"
+                      : "bg-white text-[#304059] border-[#C8C0B4] hover:bg-[#F2EDE4]"
                   }`}
                 >
                   <span>Most Relevant to Altadena</span>
                   <span
                     className={`text-xs px-1.5 py-0.5 rounded-full font-bold ${
                       highlightedOnly
-                        ? "bg-orange-400 text-white"
-                        : "bg-orange-100 text-orange-700"
+                        ? "bg-[#304059]/15 text-[#304059]"
+                        : "bg-[#EAE5DC] text-[#6B6055]"
                     }`}
                   >
                     {highlightedCount}
                   </span>
                 </button>
                 {highlightedOnly && (
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-[#9B9488]">
                     Showing bills with direct impact on Altadena / Eaton Fire
                     recovery
                   </span>
@@ -277,12 +277,12 @@ export default function BillsClient({
 
             {/* Bills grid */}
             {filteredBills.length === 0 ? (
-              <div className="text-center py-20 text-gray-400">
+              <div className="text-center py-20">
                 <div className="text-4xl mb-3">🔍</div>
-                <p className="text-lg font-medium text-gray-500">
+                <p className="text-lg font-medium text-[#6B6055]">
                   No bills match your filters
                 </p>
-                <p className="text-sm mt-1">
+                <p className="text-sm mt-1 text-[#9B9488]">
                   Try adjusting your search or filter criteria
                 </p>
               </div>
@@ -299,8 +299,8 @@ export default function BillsClient({
         {activeTab === "proposals" && (
           <>
             {/* Proposals intro */}
-            <div className="bg-violet-50 border border-violet-200 rounded-xl px-4 py-3 text-xs text-violet-800 flex items-start gap-2">
-              <span className="text-violet-500 text-sm mt-0.5">💡</span>
+            <div className="bg-[#F5F0E8] border border-[#DDD6C8] rounded-xl px-4 py-3 text-xs text-[#4A3F35] flex items-start gap-2">
+              <span className="text-[#9B9488] text-sm mt-0.5">💡</span>
               <span>
                 <strong>Policy proposals</strong> are ideas from think tanks,
                 politicians, community groups, and advocacy organizations that
@@ -310,20 +310,20 @@ export default function BillsClient({
             </div>
 
             {/* Proposals filter bar */}
-            <div className="bg-white border border-gray-200 rounded-xl p-4 flex flex-wrap gap-3 items-center">
+            <div className="bg-white border border-[#E8E2D8] rounded-xl p-4 flex flex-wrap gap-3 items-center">
               <input
                 type="text"
                 placeholder="Search proposals…"
                 value={proposalSearch}
                 onChange={(e) => setProposalSearch(e.target.value)}
-                className="flex-1 min-w-[180px] text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-violet-200"
+                className="flex-1 min-w-[180px] text-sm border border-[#E8E2D8] rounded-lg px-3 py-2 text-[#304059] placeholder-[#B8B0A8] focus:outline-none focus:ring-2 focus:ring-[#BC5839]/20 focus:border-[#BC5839]"
               />
               <select
                 value={proposalSourceType}
                 onChange={(e) =>
                   setProposalSourceType(e.target.value as ProposalSource | "all")
                 }
-                className="text-sm border border-gray-200 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-violet-200"
+                className="text-sm border border-[#E8E2D8] rounded-lg px-3 py-2 bg-white text-[#304059] focus:outline-none focus:ring-2 focus:ring-[#BC5839]/20 focus:border-[#BC5839]"
               >
                 <option value="all">All Sources</option>
                 <option value="think_tank">Think Tanks</option>
@@ -338,7 +338,7 @@ export default function BillsClient({
                 onChange={(e) =>
                   setProposalTopic(e.target.value as BillTopic | "all")
                 }
-                className="text-sm border border-gray-200 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-violet-200"
+                className="text-sm border border-[#E8E2D8] rounded-lg px-3 py-2 bg-white text-[#304059] focus:outline-none focus:ring-2 focus:ring-[#BC5839]/20 focus:border-[#BC5839]"
               >
                 <option value="all">All Topics</option>
                 <option value="insurance">Insurance</option>
@@ -353,7 +353,7 @@ export default function BillsClient({
                 <option value="debris_removal">Debris Removal</option>
                 <option value="evacuation">Evacuation</option>
               </select>
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-[#9B9488]">
                 {filteredProposals.length} of {initialProposals.length}
               </span>
               {(proposalSearch || proposalTopic !== "all" || proposalSourceType !== "all") && (
@@ -363,7 +363,7 @@ export default function BillsClient({
                     setProposalTopic("all");
                     setProposalSourceType("all");
                   }}
-                  className="text-xs text-violet-600 hover:text-violet-800 font-medium"
+                  className="text-xs text-[#BC5839] hover:text-[#9B3A22] font-medium"
                 >
                   Clear filters
                 </button>
@@ -372,12 +372,12 @@ export default function BillsClient({
 
             {/* Proposals grid */}
             {filteredProposals.length === 0 ? (
-              <div className="text-center py-20 text-gray-400">
+              <div className="text-center py-20">
                 <div className="text-4xl mb-3">🔍</div>
-                <p className="text-lg font-medium text-gray-500">
+                <p className="text-lg font-medium text-[#6B6055]">
                   No proposals match your filters
                 </p>
-                <p className="text-sm mt-1">
+                <p className="text-sm mt-1 text-[#9B9488]">
                   Try adjusting your search or filter criteria
                 </p>
               </div>
@@ -392,14 +392,14 @@ export default function BillsClient({
         )}
 
         {/* Footer */}
-        <footer className="pt-8 pb-4 border-t border-gray-200 text-center">
-          <p className="text-xs text-gray-400 mb-2">
+        <footer className="pt-8 pb-4 border-t border-[#E8E2D8] text-center">
+          <p className="text-xs text-[#9B9488] mb-2">
             Built to help Altadena residents track wildfire recovery legislation.
           </p>
-          <div className="flex justify-center gap-4 text-xs text-gray-400">
+          <div className="flex justify-center gap-4 text-xs text-[#9B9488]">
             <a
               href="https://leginfo.legislature.ca.gov"
-              className="hover:text-gray-600 transition-colors"
+              className="hover:text-[#4A3F35] transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -408,7 +408,7 @@ export default function BillsClient({
             <span>·</span>
             <a
               href="https://www.congress.gov"
-              className="hover:text-gray-600 transition-colors"
+              className="hover:text-[#4A3F35] transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -417,7 +417,7 @@ export default function BillsClient({
             <span>·</span>
             <a
               href="https://openstates.org"
-              className="hover:text-gray-600 transition-colors"
+              className="hover:text-[#4A3F35] transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -426,7 +426,7 @@ export default function BillsClient({
             <span>·</span>
             <a
               href="https://www.insurance.ca.gov"
-              className="hover:text-gray-600 transition-colors"
+              className="hover:text-[#4A3F35] transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
