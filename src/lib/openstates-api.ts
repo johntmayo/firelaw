@@ -138,7 +138,7 @@ export async function fetchCaliforniaBills(apiKey: string): Promise<Bill[]> {
   for (const query of CA_WILDFIRE_QUERIES) {
     try {
       const url = new URL(`${BASE_URL}/bills`);
-      url.searchParams.set("jurisdiction", "ocd-division/country:us/state:ca");
+      url.searchParams.set("jurisdiction", "ca");
       url.searchParams.set("q", query);
       url.searchParams.set("sort", "-updated_at");
       url.searchParams.set("per_page", "10");
