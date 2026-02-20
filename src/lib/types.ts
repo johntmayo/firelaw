@@ -60,3 +60,40 @@ export interface FilterState {
 }
 
 export type SortOrder = "date_desc" | "date_asc" | "relevance" | "status";
+
+// --- Policy Proposals ---
+
+export type ProposalSource =
+  | "think_tank"
+  | "politician"
+  | "citizen_movement"
+  | "government_agency"
+  | "advocacy_group"
+  | "academic";
+
+export type ProposalStatus =
+  | "circulating"       // published/out there, not yet gaining institutional traction
+  | "gaining_support"   // attracting endorsements or legislative attention
+  | "under_review"      // being formally considered by lawmakers or agencies
+  | "incorporated"      // adopted into actual legislation or regulation
+  | "stalled";          // not moving forward
+
+export interface PolicyProposal {
+  id: string;
+  title: string;
+  description: string;
+  proposedBy: {
+    name: string;
+    organization: string;
+    type: ProposalSource;
+  };
+  proposedDate: string;
+  topics: BillTopic[];
+  status: ProposalStatus;
+  statusLabel: string;
+  url?: string;
+  summary?: string;        // "Why it matters for Altadena"
+  relatedBills?: string[]; // bill numbers, e.g. ["AB 226", "SB 505"]
+  isHighlighted?: boolean;
+  relevanceScore?: number; // 1–10
+}

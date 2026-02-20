@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import BillsClient from "./BillsClient";
 import { CURATED_BILLS } from "@/lib/curated-bills";
+import { CURATED_PROPOSALS } from "@/lib/curated-proposals";
 
 export const revalidate = 3600;
 
@@ -74,6 +75,7 @@ export default async function HomePage() {
     <Suspense fallback={null}>
       <BillsClient
         initialBills={data.bills}
+        initialProposals={CURATED_PROPOSALS}
         hasLiveData={data.hasLiveData}
         apiKeysConfigured={data.apiKeysConfigured}
         lastUpdated={data.lastUpdated}
