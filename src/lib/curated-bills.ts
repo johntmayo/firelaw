@@ -97,6 +97,48 @@ export const CURATED_BILLS: Bill[] = [
   // ── CALIFORNIA REGULAR SESSION (2025) ────────────────────────────────────────
 
   {
+    id: "ca-ab-1642",
+    billNumber: "AB 1642",
+    title: "Wildfire Contamination: DTSC Health-Based Clearance Standards",
+    description:
+      "Requires the Department of Toxic Substances Control (DTSC) to adopt emergency regulations by July 1, 2027 specifying standards for investigation, environmental testing, and removal of contaminants inside and outside homes, schools, and workplaces in residential areas after a wildfire. Standards must include health-based clearance levels.",
+    source: "california",
+    status: "in_committee",
+    statusLabel: "In Committee",
+    statusDate: "2025-02-01",
+    introducedDate: "2025-01-13",
+    body: "California Assembly",
+    sponsors: [],
+    topics: ["wildfire_recovery", "public_safety", "debris_removal"],
+    url: "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB1642",
+    summary:
+      "Directly addresses one of the most serious long-term risks facing Altadena residents: toxic contamination from ash, heavy metals, and hazardous materials left behind by the Eaton Fire. Mandates DTSC set enforceable, health-based clearance standards before homes are re-occupied — a gap in current law exposed by the 2025 fires.",
+    lastAction: "Referred to Committee",
+    isHighlighted: true,
+    relevanceScore: 10,
+  },
+  {
+    id: "ca-ab-238",
+    billNumber: "AB 238",
+    title: "Wildfire Mortgage Forbearance: Eaton and Palisades Fire Relief",
+    description:
+      "Authorizes borrowers experiencing financial hardship due directly to the Eaton Wildfire, Palisades Fire, or Straight-line Winds (January 2025 state of emergency / federal disaster declaration) to request forbearance on residential mortgage loans, with prescribed procedures for lenders.",
+    source: "california",
+    status: "in_committee",
+    statusLabel: "In Committee",
+    statusDate: "2025-01-27",
+    introducedDate: "2025-01-13",
+    body: "California Assembly",
+    sponsors: [],
+    topics: ["housing", "disaster_relief", "wildfire_recovery"],
+    url: "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB238",
+    summary:
+      "Many Altadena homeowners who lost income or their homes in the Eaton Fire are still carrying mortgages on destroyed or uninhabitable properties. This bill creates a formal forbearance process tied specifically to the January 2025 disaster declarations, preventing foreclosure during the recovery period.",
+    lastAction: "Referred to Committee",
+    isHighlighted: true,
+    relevanceScore: 10,
+  },
+  {
     id: "ca-ab-226",
     billNumber: "AB 226",
     title: "Homeowner Insurance: Non-Renewal Moratorium in Disaster Areas",

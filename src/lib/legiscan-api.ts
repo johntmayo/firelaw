@@ -65,13 +65,38 @@ function inferTopics(title: string, action: string): BillTopic[] {
   if (combined.includes("wildfire") || combined.includes("fire")) topics.push("wildfire_recovery");
   if (combined.includes("insurance")) topics.push("insurance");
   if (combined.includes("fema") || combined.includes("disaster") || combined.includes("emergency")) topics.push("fema");
-  if (combined.includes("housing") || combined.includes("rebuild") || combined.includes("home")) topics.push("housing");
-  if (combined.includes("debris") || combined.includes("cleanup")) topics.push("debris_removal");
+  if (combined.includes("housing") || combined.includes("rebuild") || combined.includes("home") || combined.includes("mortgage") || combined.includes("forbearance")) topics.push("housing");
+  if (combined.includes("debris") || combined.includes("cleanup") || combined.includes("toxic") || combined.includes("contamina") || combined.includes("hazardous")) topics.push("debris_removal");
   if (combined.includes("utility") || combined.includes("electric") || combined.includes("pge")) topics.push("utilities");
   if (combined.includes("tax") || combined.includes("relief")) topics.push("disaster_relief");
   if (combined.includes("forest") || combined.includes("fuel") || combined.includes("vegetation")) topics.push("environment");
+  if (combined.includes("safe") || combined.includes("health") || combined.includes("public safety")) topics.push("public_safety");
   if (topics.length === 0) topics.push("disaster_relief");
   return topics;
+}
+
+// Score how relevant a bill is to the Altadena/Eaton Fire recovery (1–10)
+function scoreAltadenaRelevance(bill: LegiScanSearchResult): number {
+  const text = (bill.title + " " + bill.last_action).toLowerCase();
+  let score = 3; // base for anything that passed our search queries
+
+  // Highest specificity: named locations or the specific disaster
+  if (text.includes("altadena")) score += 6;
+  if (text.includes("eaton")) score += 5;
+  if (text.includes("palisades")) score += 3;
+  if (text.includes("los angeles") || text.includes("l.a.")) score += 2;
+
+  // Disaster-specific topic signals
+  if (text.includes("wildfire") || text.includes("wild fire")) score += 2;
+  if (text.includes("debris") || text.includes("cleanup")) score += 2;
+  if (text.includes("toxic") || text.includes("contamina") || text.includes("hazardous")) score += 2;
+  if (text.includes("mortgage") || text.includes("forbearance")) score += 2;
+  if (text.includes("rebuild") || text.includes("reconstruction") || text.includes("permit")) score += 2;
+  if (text.includes("fair plan") || text.includes("insur")) score += 1;
+  if (text.includes("fema") || text.includes("disaster relief") || text.includes("disaster recovery")) score += 1;
+  if (text.includes("housing") || text.includes("home")) score += 1;
+
+  return Math.min(10, score);
 }
 
 function inferSource(state: string): BillSource {
@@ -111,16 +136,30 @@ function legiscanBillToBill(bill: LegiScanSearchResult): Bill {
     url: bill.url,
     lastAction: bill.last_action,
     isLive: true,
-    relevanceScore: Math.round((bill.relevance ?? 50) / 10),
+    relevanceScore: scoreAltadenaRelevance(bill),
   };
 }
 
+// Pinned: specific bill numbers we know are relevant, searched directly.
+// These ensure named bills always surface even if general queries miss them.
+const PINNED_CA_BILLS = [
+  "AB 1642", // DTSC wildfire contamination standards
+  "AB 238",  // Eaton/Palisades mortgage forbearance
+];
+
 const LEGISCAN_QUERIES: Array<{ query: string; state: string }> = [
-  { query: "wildfire disaster recovery", state: "CA" },
-  { query: "Eaton fire", state: "CA" },
+  // Pinned specific bills
+  ...PINNED_CA_BILLS.map((bill) => ({ query: bill, state: "CA" })),
+  // General topic queries — CA
+  { query: "Eaton fire Altadena", state: "CA" },
+  { query: "wildfire disaster recovery 2025", state: "CA" },
   { query: "FAIR Plan insurance wildfire", state: "CA" },
   { query: "debris removal fire disaster", state: "CA" },
-  { query: "wildfire California disaster", state: "US" },
+  { query: "wildfire mortgage forbearance", state: "CA" },
+  { query: "wildfire contamination toxic", state: "CA" },
+  { query: "fire rebuild permit reconstruction", state: "CA" },
+  // General topic queries — federal
+  { query: "wildfire California disaster 2025", state: "US" },
   { query: "FEMA disaster California", state: "US" },
   { query: "wildfire insurance homeowner", state: "US" },
 ];
