@@ -143,8 +143,23 @@ function legiscanBillToBill(bill: LegiScanSearchResult): Bill {
 // Pinned: specific bill numbers we know are relevant, searched directly.
 // These ensure named bills always surface even if general queries miss them.
 const PINNED_CA_BILLS = [
+  // Assembly bills
   "AB 1642", // DTSC wildfire contamination standards
   "AB 238",  // Eaton/Palisades mortgage forbearance
+  // Fire Safe California Senate package
+  "SB 581",  // CAL FIRE seasonal-to-permanent
+  "SB 36",   // Price gouging enforcement
+  "SB 610",  // Mortgage forbearance + tenant + mobilehome protections
+  "SB 663",  // Property tax relief
+  "SB 625",  // Speed-up residential rebuilds
+  "SB 616",  // Insurance community hardening commission
+  "SB 547",  // Commercial insurance moratorium
+  "SB 676",  // CEQA streamlining for disaster rebuilds
+  "SB 582",  // Rebuilding licensed facilities
+  "SB 571",  // Penalties for looting and impersonation
+  "SB 629",  // Fire hazard zone designation
+  "SB 326",  // Wildfire mitigation strategic planning
+  "SB 641",  // Consumer protection and debris removal
 ];
 
 const LEGISCAN_QUERIES: Array<{ query: string; state: string }> = [
