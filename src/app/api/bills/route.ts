@@ -20,7 +20,7 @@ export async function GET() {
   if (congressApiKey) {
     fetches.push(
       fetchCongressBills(congressApiKey)
-        .then((bills) => liveBills.push(...bills))
+        .then((bills) => { liveBills.push(...bills); })
         .catch((err) => console.error("Congress.gov fetch error:", err))
     );
   }
@@ -28,7 +28,7 @@ export async function GET() {
   if (openStatesApiKey) {
     fetches.push(
       fetchCaliforniaBills(openStatesApiKey)
-        .then((bills) => liveBills.push(...bills))
+        .then((bills) => { liveBills.push(...bills); })
         .catch((err) => console.error("OpenStates fetch error:", err))
     );
   }
@@ -36,7 +36,7 @@ export async function GET() {
   if (legiscanApiKey) {
     fetches.push(
       fetchLegiScanBills(legiscanApiKey)
-        .then((bills) => liveBills.push(...bills))
+        .then((bills) => { liveBills.push(...bills); })
         .catch((err) => console.error("LegiScan fetch error:", err))
     );
   }
